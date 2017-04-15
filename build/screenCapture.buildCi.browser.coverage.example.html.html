@@ -1,6 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <title>Code coverage report for node-npmtest-run-sequence/run-sequence/index.js</title>
     <meta charset="utf-8">
     <style>
@@ -210,11 +208,11 @@
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">node-npmtest-run-sequence/run-sequence/</a> &#187; index.js</div>
+    <div class="path"><a href="../../index.html">All files</a> » <a href="index.html">node-npmtest-run-sequence/run-sequence/</a> » index.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
-<tr><td class="line-count">1
+<tbody><tr><td class="line-count">1
 2
 3
 4
@@ -429,108 +427,109 @@
 var colors = require('chalk');
 var gutil = require('gulp-util');
 &nbsp;
-<span class="fstat-no" title="function not covered" >function verifyTaskSets(gulp, taskSets, skipArrays) {</span>
-<span class="cstat-no" title="statement not covered" >	if(taskSets.length === 0) {</span>
-<span class="cstat-no" title="statement not covered" >		throw new Error('No tasks were provided to run-sequence');</span>
+<span class="fstat-no" title="function not covered">function verifyTaskSets(gulp, taskSets, skipArrays) {</span>
+<span class="cstat-no" title="statement not covered">	if(taskSets.length === 0) {</span>
+<span class="cstat-no" title="statement not covered">		throw new Error('No tasks were provided to run-sequence');</span>
 	}
-<span class="cstat-no" title="statement not covered" >	var foundTasks = {};</span>
-<span class="cstat-no" title="statement not covered" >	taskSets.forEach(<span class="fstat-no" title="function not covered" >function(t) {</span></span>
-<span class="cstat-no" title="statement not covered" >		var isTask = typeof t === "string",</span>
+<span class="cstat-no" title="statement not covered">	var foundTasks = {};</span>
+<span class="cstat-no" title="statement not covered">	taskSets.forEach(<span class="fstat-no" title="function not covered">function(t) {</span></span>
+<span class="cstat-no" title="statement not covered">		var isTask = typeof t === "string",</span>
 			isArray = !skipArrays &amp;&amp; Array.isArray(t);
-<span class="cstat-no" title="statement not covered" >		if(!isTask &amp;&amp; !isArray) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new Error("Task "+t+" is not a valid task string.");</span>
+<span class="cstat-no" title="statement not covered">		if(!isTask &amp;&amp; !isArray) {</span>
+<span class="cstat-no" title="statement not covered">			throw new Error("Task "+t+" is not a valid task string.");</span>
 		}
-<span class="cstat-no" title="statement not covered" >		if(isTask &amp;&amp; !gulp.hasTask(t)) {</span>
-<span class="cstat-no" title="statement not covered" >			throw new Error("Task "+t+" is not configured as a task on gulp.  If this is a submodule, you may need to use require('run-sequence').use(gulp).");</span>
+<span class="cstat-no" title="statement not covered">		if(isTask &amp;&amp; !gulp.hasTask(t)) {</span>
+<span class="cstat-no" title="statement not covered">			throw new Error("Task "+t+" is not configured as a task on gulp.  If this is a submodule, you may need to use require('run-sequence').use(gulp).");</span>
 		}
-<span class="cstat-no" title="statement not covered" >		if(skipArrays &amp;&amp; isTask) {</span>
-<span class="cstat-no" title="statement not covered" >			if(foundTasks[t]) {</span>
-<span class="cstat-no" title="statement not covered" >				throw new Error("Task "+t+" is listed more than once. This is probably a typo.");</span>
+<span class="cstat-no" title="statement not covered">		if(skipArrays &amp;&amp; isTask) {</span>
+<span class="cstat-no" title="statement not covered">			if(foundTasks[t]) {</span>
+<span class="cstat-no" title="statement not covered">				throw new Error("Task "+t+" is listed more than once. This is probably a typo.");</span>
 			}
-<span class="cstat-no" title="statement not covered" >			foundTasks[t] = true;</span>
+<span class="cstat-no" title="statement not covered">			foundTasks[t] = true;</span>
 		}
-<span class="cstat-no" title="statement not covered" >		if(isArray) {</span>
-<span class="cstat-no" title="statement not covered" >			if(t.length === 0) {</span>
-<span class="cstat-no" title="statement not covered" >				throw new Error("An empty array was provided as a task set");</span>
+<span class="cstat-no" title="statement not covered">		if(isArray) {</span>
+<span class="cstat-no" title="statement not covered">			if(t.length === 0) {</span>
+<span class="cstat-no" title="statement not covered">				throw new Error("An empty array was provided as a task set");</span>
 			}
-<span class="cstat-no" title="statement not covered" >			verifyTaskSets(gulp, t, true, foundTasks);</span>
+<span class="cstat-no" title="statement not covered">			verifyTaskSets(gulp, t, true, foundTasks);</span>
 		}
 	});
 }
 &nbsp;
-<span class="fstat-no" title="function not covered" >function runSequence(gulp) {</span>
+<span class="fstat-no" title="function not covered">function runSequence(gulp) {</span>
 	// load gulp directly when no external was passed
-<span class="cstat-no" title="statement not covered" >	if(gulp === undefined) {</span>
-<span class="cstat-no" title="statement not covered" >		gulp = require('gulp');</span>
+<span class="cstat-no" title="statement not covered">	if(gulp === undefined) {</span>
+<span class="cstat-no" title="statement not covered">		gulp = require('gulp');</span>
 	}
 &nbsp;
 	// Slice and dice the input to prevent modification of parallel arrays.
-<span class="cstat-no" title="statement not covered" >	var taskSets = Array.prototype.slice.call(arguments, 1).map(<span class="fstat-no" title="function not covered" >function(task) {</span></span>
-<span class="cstat-no" title="statement not covered" >			return Array.isArray(task) ? task.slice() : task;</span>
+<span class="cstat-no" title="statement not covered">	var taskSets = Array.prototype.slice.call(arguments, 1).map(<span class="fstat-no" title="function not covered">function(task) {</span></span>
+<span class="cstat-no" title="statement not covered">			return Array.isArray(task) ? task.slice() : task;</span>
 		}),
 		callBack = typeof taskSets[taskSets.length-1] === 'function' ? taskSets.pop() : false,
 		currentTaskSet,
 &nbsp;
-		finish = <span class="fstat-no" title="function not covered" >function(e) {</span>
-<span class="cstat-no" title="statement not covered" >			gulp.removeListener('task_stop', onTaskEnd);</span>
-<span class="cstat-no" title="statement not covered" >			gulp.removeListener('task_err', onError);</span>
+		finish = <span class="fstat-no" title="function not covered">function(e) {</span>
+<span class="cstat-no" title="statement not covered">			gulp.removeListener('task_stop', onTaskEnd);</span>
+<span class="cstat-no" title="statement not covered">			gulp.removeListener('task_err', onError);</span>
 			
-<span class="cstat-no" title="statement not covered" >			var error;</span>
-<span class="cstat-no" title="statement not covered" >			if (e &amp;&amp; e.err) {</span>
-<span class="cstat-no" title="statement not covered" >				error = new gutil.PluginError('run-sequence(' + e.task + ')', e.err, {showStack: true});</span>
+<span class="cstat-no" title="statement not covered">			var error;</span>
+<span class="cstat-no" title="statement not covered">			if (e &amp;&amp; e.err) {</span>
+<span class="cstat-no" title="statement not covered">				error = new gutil.PluginError('run-sequence(' + e.task + ')', e.err, {showStack: true});</span>
 			}
 			
-<span class="cstat-no" title="statement not covered" >			if(callBack) {</span>
-<span class="cstat-no" title="statement not covered" >				callBack(error);</span>
-			} else <span class="cstat-no" title="statement not covered" >if(error) {</span>
-<span class="cstat-no" title="statement not covered" >				gutil.log(colors.red(error.toString()));</span>
+<span class="cstat-no" title="statement not covered">			if(callBack) {</span>
+<span class="cstat-no" title="statement not covered">				callBack(error);</span>
+			} else <span class="cstat-no" title="statement not covered">if(error) {</span>
+<span class="cstat-no" title="statement not covered">				gutil.log(colors.red(error.toString()));</span>
 			}
 		},
 &nbsp;
-		onError = <span class="fstat-no" title="function not covered" >function(err) {</span>
-<span class="cstat-no" title="statement not covered" >			finish(err);</span>
+		onError = <span class="fstat-no" title="function not covered">function(err) {</span>
+<span class="cstat-no" title="statement not covered">			finish(err);</span>
 		},
-		onTaskEnd = <span class="fstat-no" title="function not covered" >function(event) {</span>
-<span class="cstat-no" title="statement not covered" >			var idx = currentTaskSet.indexOf(event.task);</span>
-<span class="cstat-no" title="statement not covered" >			if(idx &gt; -1) {</span>
-<span class="cstat-no" title="statement not covered" >				currentTaskSet.splice(idx,1);</span>
+		onTaskEnd = <span class="fstat-no" title="function not covered">function(event) {</span>
+<span class="cstat-no" title="statement not covered">			var idx = currentTaskSet.indexOf(event.task);</span>
+<span class="cstat-no" title="statement not covered">			if(idx &gt; -1) {</span>
+<span class="cstat-no" title="statement not covered">				currentTaskSet.splice(idx,1);</span>
 			}
-<span class="cstat-no" title="statement not covered" >			if(currentTaskSet.length === 0) {</span>
-<span class="cstat-no" title="statement not covered" >				runNextSet();</span>
+<span class="cstat-no" title="statement not covered">			if(currentTaskSet.length === 0) {</span>
+<span class="cstat-no" title="statement not covered">				runNextSet();</span>
 			}
 		},
 &nbsp;
-		runNextSet = <span class="fstat-no" title="function not covered" >function() {</span>
-<span class="cstat-no" title="statement not covered" >			if(taskSets.length) {</span>
-<span class="cstat-no" title="statement not covered" >				var command = taskSets.shift();</span>
-<span class="cstat-no" title="statement not covered" >				if(!Array.isArray(command)) {</span>
-<span class="cstat-no" title="statement not covered" >					command = [command];</span>
+		runNextSet = <span class="fstat-no" title="function not covered">function() {</span>
+<span class="cstat-no" title="statement not covered">			if(taskSets.length) {</span>
+<span class="cstat-no" title="statement not covered">				var command = taskSets.shift();</span>
+<span class="cstat-no" title="statement not covered">				if(!Array.isArray(command)) {</span>
+<span class="cstat-no" title="statement not covered">					command = [command];</span>
 				}
-<span class="cstat-no" title="statement not covered" >				currentTaskSet = command;</span>
-<span class="cstat-no" title="statement not covered" >				gulp.start.apply(gulp, command);</span>
+<span class="cstat-no" title="statement not covered">				currentTaskSet = command;</span>
+<span class="cstat-no" title="statement not covered">				gulp.start.apply(gulp, command);</span>
 			} else {
-<span class="cstat-no" title="statement not covered" >				finish();</span>
+<span class="cstat-no" title="statement not covered">				finish();</span>
 			}
 		};
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	verifyTaskSets(gulp, taskSets);</span>
+<span class="cstat-no" title="statement not covered">	verifyTaskSets(gulp, taskSets);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	gulp.on('task_stop', onTaskEnd);</span>
-<span class="cstat-no" title="statement not covered" >	gulp.on('task_err', onError);</span>
+<span class="cstat-no" title="statement not covered">	gulp.on('task_stop', onTaskEnd);</span>
+<span class="cstat-no" title="statement not covered">	gulp.on('task_err', onError);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >	runNextSet();</span>
+<span class="cstat-no" title="statement not covered">	runNextSet();</span>
 }
 &nbsp;
 module.exports = runSequence.bind(null, undefined);
-module.exports.use = <span class="fstat-no" title="function not covered" >function(gulp) {</span>
-<span class="cstat-no" title="statement not covered" >	return runSequence.bind(null, gulp);</span>
+module.exports.use = <span class="fstat-no" title="function not covered">function(gulp) {</span>
+<span class="cstat-no" title="statement not covered">	return runSequence.bind(null, gulp);</span>
 };
 &nbsp;
 &nbsp;</pre></td></tr>
-</table></pre>
+</tbody></table></pre>
 </div>
 <div class="footer">
     <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Sat Apr 15 2017 22:14:27 GMT+0000 (UTC)</div>
 </div>
-</body>
-</html>
+
+
+</body></html>
