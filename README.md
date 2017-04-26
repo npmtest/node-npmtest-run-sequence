@@ -1,6 +1,6 @@
 # npmtest-run-sequence
 
-#### test coverage for  [run-sequence (v1.2.2)](https://github.com/OverZealous/run-sequence)  [![npm package](https://img.shields.io/npm/v/npmtest-run-sequence.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-run-sequence) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-run-sequence.svg)](https://travis-ci.org/npmtest/node-npmtest-run-sequence)
+#### basic test coverage for  [run-sequence (v1.2.2)](https://github.com/OverZealous/run-sequence)  [![npm package](https://img.shields.io/npm/v/npmtest-run-sequence.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-run-sequence) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-run-sequence.svg)](https://travis-ci.org/npmtest/node-npmtest-run-sequence)
 
 #### Run a series of dependent gulp tasks in order
 
@@ -10,7 +10,7 @@
 |--:|:--|
 | coverage : | [![istanbul-coverage](https://npmtest.github.io/node-npmtest-run-sequence/build/coverage.badge.svg)](https://npmtest.github.io/node-npmtest-run-sequence/build/coverage.html/index.html)|
 | test-report : | [![test-report](https://npmtest.github.io/node-npmtest-run-sequence/build/test-report.badge.svg)](https://npmtest.github.io/node-npmtest-run-sequence/build/test-report.html)|
-| build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-run-sequence/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-run-sequence/tree/gh-pages/build)|
+| test-server-github : | [![github.com test-server](https://npmtest.github.io/node-npmtest-run-sequence/GitHub-Mark-32px.png)](https://npmtest.github.io/node-npmtest-run-sequence/build/app/index.html) | | build-artifacts : | [![build-artifacts](https://npmtest.github.io/node-npmtest-run-sequence/glyphicons_144_folder_open.png)](https://github.com/npmtest/node-npmtest-run-sequence/tree/gh-pages/build)|
 
 - [https://npmtest.github.io/node-npmtest-run-sequence/build/coverage.html/index.html](https://npmtest.github.io/node-npmtest-run-sequence/build/coverage.html/index.html)
 
@@ -85,7 +85,8 @@
     "scripts": {
         "test": "mocha --reporter spec"
     },
-    "version": "1.2.2"
+    "version": "1.2.2",
+    "bin": {}
 }
 ```
 
